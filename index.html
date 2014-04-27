@@ -1,0 +1,110 @@
+<!Doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+   		<title>An awesome knockout.js app</title>
+		<link rel="stylesheet" href="custom_components/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="custom_components/bootstrap/css/bootstrap-theme.css">
+		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> -->
+		
+		<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+		<style type="text/css">
+			*{
+				transition: all 0.25s;
+			}
+			.can{
+				background-color: #27ae60;
+			}
+			.highlight{
+				background-color: #2980b9;
+			}
+			.dep{
+				margin-bottom: 100px;
+			}
+			.subj{
+				cursor: pointer;
+				word-wrap: break-word;
+			}
+			.subj > div{
+				padding: 5px;
+				font-size: 10px;
+			}
+			.subjname{
+				font-size: 11px;
+				font-weight: bold;
+			}
+			.sem{
+				margin-bottom: 20px;
+				border-bottom: 2px solid #ddd;
+			}
+			.col-sm-0{
+				display: none;
+			}
+			.footer{
+				color: #ccc;
+			}
+			.navbar-text{
+				cursor: pointer;
+			}
+			.bg-done{
+				background-color: #2ecc71;
+			}
+			.bg-cando{
+				background-color: #f39c12;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="navbar navbar-inverse " role="navigation">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">OE Dependency map 2</a>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li data-bind="click: getData" class="navbar-text" data-json="data/bsc_2008.json">BSC2008</li>
+	            <li data-bind="click: getData" class="navbar-text" data-json="data/bsc_2012.json">BSC2012</li>
+	            <li data-bind="click: getData" class="navbar-text" data-json="data/msc_2010.json">MSC2010</li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </div>
+
+   	    <div class="dep container" role="main">
+			<h1>OE Dependency map 2</h1>
+			<div>
+				<p>Félévek száma: <span data-bind="text: levelCount"></span></p>
+				<div id="levels" class="panel panel-default">
+					<div class="panel-body">
+						<div class="row" data-bind="foreach: levels">
+							<div class="sem col-md-1 col-sd-7 col-sm-7">
+								<div data-bind="foreach: subjects">
+									<div class="panel panel-default subj" data-bind="css: { 'bg-done': done, 'bg-cando': highlight, ender: nochild }, click: toggle ">
+										<div class="panel-body">
+											<div class="subjname" data-bind="text: name"></div>
+											<!-- <div data-bind="text: id" class="hidden-sm hidden-xs"></div>-->
+											<div data-bind="text: kreditText" class="hidden-sm hidden-xs">kredit</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="footer">
+        	<p class="muted">OE Dep map 2 prealpha | Powered by Knockout & Twitter Bootstrap</p>
+      	</div>
+		</div>
+	</body>
+	<script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+</html>
