@@ -1,6 +1,6 @@
-# oe_dep_2
+# OE-Dependency-Map-2
 
-An awesome knockout.js app
+Responsive version of [OE-Dependency-Map](https://github.com/szalonna/OE-Dependecy-Map)
 
 ## Getting Started
 
